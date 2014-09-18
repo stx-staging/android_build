@@ -991,6 +991,9 @@ $(foreach device,$(call to-upper,$(BOARD_SUPER_PARTITION_BLOCK_DEVICES)), \
 
 endif # PRODUCT_USE_DYNAMIC_PARTITIONS
 
+# Rules for QCOM targets
+include vendor/statix/build/core/qcom_target.mk
+
 # ###############################################################
 # Set up final options.
 # ###############################################################
