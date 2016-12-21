@@ -2094,4 +2094,4 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. vendor/aosp/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/aosp/build/envsetup.sh
