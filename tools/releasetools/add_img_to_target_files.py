@@ -741,10 +741,11 @@ def AddImagesToTargetFiles(filename):
   # target_files.zip as a prebuilt blob. We consider either of them as
   # {vendor,product,system_ext}.img being available, which could be
   # used when generating vbmeta.img for AVB.
-  has_vendor = ((os.path.isdir(os.path.join(OPTIONS.input_tmp, "VENDOR")) and
+  has_vendor = (((os.path.isdir(os.path.join(OPTIONS.input_tmp, "VENDOR")) and
                  OPTIONS.info_dict.get("building_vendor_image") == "true") or
                 os.path.exists(
-                    os.path.join(OPTIONS.input_tmp, "IMAGES", "vendor.img")))
+                    os.path.join(OPTIONS.input_tmp, "IMAGES", "vendor.img"))) and
+                OPTIONS.info_dict.get("vendor_prebuilt_installed") != "true")
   has_odm = ((os.path.isdir(os.path.join(OPTIONS.input_tmp, "ODM")) and
               OPTIONS.info_dict.get("building_odm_image") == "true") or
              os.path.exists(
