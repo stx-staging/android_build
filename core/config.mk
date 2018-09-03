@@ -1178,3 +1178,6 @@ DEFAULT_DATA_OUT_MODULES := ltp $(ltp_packages) $(kselftest_modules)
 RECORD_ALL_DEPS :=$= $(filter true,$(RECORD_ALL_DEPS))
 
 include $(BUILD_SYSTEM)/dumpvar.mk
+
+# Include any vendor specific config.mk file
+-include vendor/*/build/core/config.mk
