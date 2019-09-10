@@ -312,10 +312,6 @@ endif
 # are specific to the user's build configuration.
 include $(BUILD_SYSTEM)/envsetup.mk
 
-ifneq ($(STATIX_BUILD),)
-include vendor/statix/config/BoardConfigStatix.mk
-endif
-
 # Pruned directory options used when using findleaves.py
 # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
@@ -1163,6 +1159,10 @@ dont_bother_goals := out \
 # Make ANDROID Soong config variables visible to Android.mk files, for
 # consistency with those defined in BoardConfig.mk files.
 include $(BUILD_SYSTEM)/android_soong_config_vars.mk
+
+ifeq ($(STATIX_BUILD),true)
+include vendor/statix/config/BoardConfigStatix.mk
+endif
 
 ifeq ($(CALLED_FROM_SETUP),true)
 include $(BUILD_SYSTEM)/ninja_config.mk
