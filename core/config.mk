@@ -306,10 +306,6 @@ endif
 # are specific to the user's build configuration.
 include $(BUILD_SYSTEM)/envsetup.mk
 
-ifneq ($(STATIX_BUILD),)
-include vendor/statix/config/BoardConfigStatix.mk
-endif
-
 # Pruned directory options used when using findleaves.py
 # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
@@ -1217,6 +1213,10 @@ endif
 # in the source tree.
 dont_bother_goals := out \
     product-graph dump-products
+
+ifneq ($(STATIX_BUILD),)
+include vendor/statix/config/BoardConfigStatix.mk
+endif
 
 ifeq ($(CALLED_FROM_SETUP),true)
 include $(BUILD_SYSTEM)/ninja_config.mk
