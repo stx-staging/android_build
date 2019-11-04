@@ -696,6 +696,13 @@ endif
 .KATI_READONLY := BUILDING_ODM_DLKM_IMAGE
 
 ###########################################
+# Now we can substitute with the real value of TARGET_COPY_OUT_VENDOR_OVERLAY
+ifeq ($(TARGET_COPY_OUT_VENDOR_OVERLAY),$(_vendor_overlay_path_placeholder))
+  TARGET_COPY_OUT_VENDOR_OVERLAY := $(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)
+endif
+PRODUCT_COPY_FILES := $(subst $(_vendor_overlay_path_placeholder),$(TARGET_COPY_OUT_VENDOR_OVERLAY),$(PRODUCT_COPY_FILES))
+
+###########################################
 # Ensure consistency among TARGET_RECOVERY_UPDATER_LIBS, AB_OTA_UPDATER, and PRODUCT_OTA_FORCE_NON_AB_PACKAGE.
 TARGET_RECOVERY_UPDATER_LIBS ?=
 AB_OTA_UPDATER ?=
