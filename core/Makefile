@@ -5176,8 +5176,8 @@ ifdef BOARD_PREBUILT_ODM_DLKMIMAGE
 	$(hide) cp $(INSTALLED_ODM_DLKMIMAGE_TARGET) $(zip_root)/IMAGES/
 endif
 ifdef INSTALLED_DTBOIMAGE_TARGET
-        $(hide) mkdir -p $(zip_root)/PREBUILT_IMAGES
-        $(hide) cp $(INSTALLED_DTBOIMAGE_TARGET) $(zip_root)/PREBUILT_IMAGES/
+	$(hide) mkdir -p $(zip_root)/PREBUILT_IMAGES
+	$(hide) cp $(INSTALLED_DTBOIMAGE_TARGET) $(zip_root)/PREBUILT_IMAGES/
 endif # INSTALLED_DTBOIMAGE_TARGET
 ifdef BOARD_PREBUILT_PVMFWIMAGE
 	$(hide) mkdir -p $(zip_root)/PREBUILT_IMAGES

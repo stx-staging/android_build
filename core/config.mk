@@ -1158,6 +1158,14 @@ endif
 dont_bother_goals := out \
     product-graph dump-products
 
+ifneq ($(STATIX_BUILD),)
+ifneq ($(wildcard device/statix/sepolicy/common/sepolicy.mk),)
+## We need to be sure the global selinux policies are included
+## last, to avoid accidental resetting by device configs
+$(eval include device/statix/sepolicy/common/sepolicy.mk)
+endif
+endif
+
 # Make ANDROID Soong config variables visible to Android.mk files, for
 # consistency with those defined in BoardConfig.mk files.
 include $(BUILD_SYSTEM)/android_soong_config_vars.mk
