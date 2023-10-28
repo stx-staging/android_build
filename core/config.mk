@@ -407,7 +407,7 @@ endif
 # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
-include vendor/aosp/config/BoardConfigAosp.mk
+include vendor/statix/config/BoardConfigStatix.mk
 
 # The build system exposes several variables for where to find the kernel
 # headers:
